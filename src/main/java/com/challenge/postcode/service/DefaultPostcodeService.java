@@ -6,6 +6,8 @@ import io.micrometer.common.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 public class DefaultPostcodeService implements PostcodeService{
 
@@ -13,7 +15,7 @@ public class DefaultPostcodeService implements PostcodeService{
     private PostcodeRepository postcodeRepository;
 
     @Override
-    public void update(PostcodeEntity entity) throws IllegalArgumentException {
+    public void update(PostcodeEntity entity) throws IllegalArgumentException, IOException {
         if(entity == null)
             throw new IllegalArgumentException("Postcode entity is null!");
 

@@ -23,9 +23,9 @@ public class DistanceController {
             String distance = distanceService.getDistanceByPostcode(from, to);
             return ResponseEntity.ok(distance);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().build();
         }
     }
     //can calculate distance using other unique indicators
-    //for example: address
+    //for example: country
 }
