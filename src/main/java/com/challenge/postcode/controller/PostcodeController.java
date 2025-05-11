@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/postcode")
+@RequestMapping("/api/postcode")
 public class PostcodeController {
     @Autowired
     private PostcodeService postcodeService;
 
     @PostMapping("/update")
-    public ResponseEntity<Void> update(@RequestBody PostcodeEntity entity) throws IllegalArgumentException, IOException {
+    public ResponseEntity<String> update(@RequestBody PostcodeEntity entity) throws IllegalArgumentException, IOException {
         try {
             postcodeService.update(entity);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.noContent().build();
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 }
